@@ -30,7 +30,6 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-
 //get ALL kanbans
 app.get("/", async (req, res) => {
   const snapshot = await KanbanBoard.get();
