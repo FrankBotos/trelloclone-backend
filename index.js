@@ -44,13 +44,33 @@ app.post("/create", async (req, res) => {
   res.send({ msg: "KanbanBoard Successfully Added" });
 });
 
-//update existing kanban board
+//update full existing kanban board
 app.post("/update", async (req, res) => {
   const id = req.body.id;
   delete req.body.id;
   const data = req.body;
   await KanbanBoard.doc(id).update(data);
   res.send({ msg: "Updated" });
+});
+
+//update columns object in a given kanban board, found by id
+app.post("/updatecols", async (req, res) => {
+  const id = req.body.id;
+  const columns = req.body.columns;
+  await KanbanBoard.doc(id).update({
+    "data.columns": columns
+  });
+  res.send({msg: "Columns Updated"})
+});
+
+
+app.post("/updatetitle", async (req, res) => {
+  const id = req.body.id;
+  const title = req.body.title;
+  await KanbanBoard.doc(id).update({
+    "data.title": title
+  });
+  res.send({msg: "Title Updated"})
 });
 
 //delete kanban board
