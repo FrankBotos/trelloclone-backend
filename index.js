@@ -1,4 +1,4 @@
-require('dotenv').config();
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const KanbanBoard = require("./config");
@@ -34,9 +34,9 @@ app.post("/updatecols", async (req, res) => {
   const id = req.body.id;
   const columns = req.body.columns;
   await KanbanBoard.doc(id).update({
-    "data.columns": columns
+    "data.columns": columns,
   });
-  res.send({msg: "Columns Updated"})
+  res.send({ msg: "Columns Updated" });
 });
 
 //update kanban title
@@ -44,11 +44,10 @@ app.post("/updatetitle", async (req, res) => {
   const id = req.body.id;
   const title = req.body.title;
   await KanbanBoard.doc(id).update({
-    "data.title": title
+    "data.title": title,
   });
-  res.send({msg: "Title Updated"})
+  res.send({ msg: "Title Updated" });
 });
-
 
 //delete kanban board
 app.post("/delete", async (req, res) => {
