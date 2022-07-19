@@ -1,14 +1,28 @@
+/*note about environment vars: 
+the project uses the "dotenv" npm package
+therefore to plug in custom firebase config values the following steps must be taken
+
+1. have a firebase project, with config details, and "firestore database" enabled
+2. create a file called ".env"
+3. re-create the env variables as seen in the firsebaseConfig JSON object below, plugging in values from your firebase config
+   eg. API_KEY="somevalue"
+
+Alternatively, the values can be pasted directly!
+
+*/
+
+
 const firebase = require("firebase");
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAF3Pm2rU_FutDc8lSr4wXGFiBjIKIPXl4",
-  authDomain: "trelloclone-77c96.firebaseapp.com",
-  databaseURL: "https://trelloclone-77c96-default-rtdb.firebaseio.com",
-  projectId: "trelloclone-77c96",
-  storageBucket: "trelloclone-77c96.appspot.com",
-  messagingSenderId: "884723740290",
-  appId: "1:884723740290:web:375320675dddd99bd74e9b",
-  measurementId: "G-JTYC3H63FJ"
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  databaseURL: process.env.DATABASE_URL,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  appId: process.env.APP_ID,
+  measurementId: process.env.MEASUREMENT_ID
 };
 
 firebase.initializeApp(firebaseConfig);

@@ -1,28 +1,4 @@
-/* example kanban board for reference
-{
-    "uid": 1231414124,
-    "title": "My Kanban Board",
-    "archived": false,
-    "columns": {
-      "123123": {
-        "name": "To Do",
-        "items": [
-          {"id":1234, "content":"task1", "due": null},
-          {"id":4312, "content":"task2", "due": null}
-          ]
-      },
-      "213124": {
-        "name": "Doing",
-        "items": [
-          {"id":1234, "content":"task2", "due": null},
-          {"id":4312, "content":"task3", "due": null}
-          ]
-      }
-    }
-}
-*/
-
-
+require('dotenv').config();
 const express = require("express");
 const cors = require("cors");
 const KanbanBoard = require("./config");
@@ -63,7 +39,7 @@ app.post("/updatecols", async (req, res) => {
   res.send({msg: "Columns Updated"})
 });
 
-
+//update kanban title
 app.post("/updatetitle", async (req, res) => {
   const id = req.body.id;
   const title = req.body.title;
@@ -72,6 +48,7 @@ app.post("/updatetitle", async (req, res) => {
   });
   res.send({msg: "Title Updated"})
 });
+
 
 //delete kanban board
 app.post("/delete", async (req, res) => {
